@@ -7,27 +7,29 @@ function handleOnload(evt) {
     xhr.onerror = handleError;
     xhr.send();
 }
-
 function handleSuccess(evt) {
     if (evt.target.status !== 200) {
         //TODO: handle error
         return;
     }
     const data = JSON.parse(evt.target.responseText);
-    //console.log(data);
-    //TODO: work with data
+    dateEl.textContent = data.date;
+    usdBuyRateEl.textContent = data.usd.buyRate;
+    eurBuyRateEl.textContent = data.eur.buyRate;
+    usdSellRateEl.textContent = data.usd.sellRate;;
+    eurSellRateEl.textContent = data.eur.sellRate;
 }
 
 function handleError(evt) {
     //TODO: handle error
 }
-
 document.addEventListener('DOMContentLoaded', handleOnload);
-/*const phoneInputEl = document.getElementById('phone-input');
-const phoneErrorEl = document.getElementById('phone-error');
-const emailInputEl = document.getElementById('email-input');
-const emailErrorEl = document.getElementById('email-error');
-*/
-//http://127.0.0.1:62969/
+const dateEl = document.getElementById('date');
+const usdBuyRateEl = document.getElementById('usd-buy-rate');
+const eurBuyRateEl = document.getElementById('eur-buy-rate');
+const usdSellRateEl = document.getElementById('usd-sell-rate');
+const eurSellRateEl = document.getElementById('eur-sell-rate');
+
+
 
 
